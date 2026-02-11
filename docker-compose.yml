@@ -1,0 +1,4 @@
+api:
+  build:
+    context: .
+    dockerfile: Dockerfile.prod

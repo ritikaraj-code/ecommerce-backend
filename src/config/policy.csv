@@ -1,0 +1,5 @@
+p, admin, products, create
+p, admin, products, update
+p, admin, orders, update
+p, user, products, read
+p, user, orders, create
