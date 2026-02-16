@@ -13,6 +13,8 @@ import { logger } from "./utils/logger.js";
 import bodyParser from "body-parser";
 import webhookRoutes from "./routes/webhook.routes.js";
 import helmet from "helmet";
+import errorHandler from './middlewares/error.middleware.js';
+import healthRoutes from "./routes/health.routes.js";
 
 const app = express();
 app.use(cors());
@@ -27,7 +29,7 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api/admin", adminRoutes);
 app.use("/api", apiLimiter);
-app.use("/health", healthRoutes);
+app.use("/api/health", healthRoutes);
 app.use("/api/webhooks", webhookRoutes);
 app.use("/api/webhooks/stripe", bodyParser.raw({ type: "application/json" }));
 app.use(express.json());
